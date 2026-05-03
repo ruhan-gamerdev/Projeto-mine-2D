@@ -211,8 +211,8 @@ def blocos_proximos(player, lista, margem=150):#150
     return proximos
 
 def salvar_mundo():
-    if not os.path.exists("saves"):
-        os.makedirs("saves")
+    if not os.path.exists("mundo_salvo"):
+        os.makedirs("mundo_salvo")
 
     dados = {
         "mund": [
@@ -265,7 +265,7 @@ def salvar_mundo():
         }
     }
 
-    with open("saves/mundo.pkl", "wb") as arquivo:
+    with open("mundo_salvo/mundo.pkl", "wb") as arquivo:
         pickle.dump(dados, arquivo)
 
     print("Mundo salvo com sucesso!")
@@ -274,11 +274,11 @@ def carregar_mundo():
     global mund, chao_pedra,chao_grama,bloc_gram, bloc_pedr, bloc_made, bloc_tabo, bloc_port
     global itm_carv, itm_ferr, player
 
-    if not os.path.exists("saves/mundo.pkl"):
+    if not os.path.exists("mundo_salvo/mundo.pkl"):
         print("Nenhum save encontrado!")
         return
 
-    with open("saves/mundo.pkl", "rb") as arquivo:
+    with open("mundo_salvo/mundo.pkl", "rb") as arquivo:
         dados = pickle.load(arquivo)
 
     # LIMPA O MUNDO ATUAL
