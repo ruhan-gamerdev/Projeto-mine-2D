@@ -434,11 +434,11 @@ class mob():
     def most(self, tela, camera_x, camera_y):
         self.rect.x = self.posx
         self.rect.y = self.posy
-        #pygame.draw.rect(tela, (255, 0, 0), (self.posx-camera_x, self.posy-camera_y, 100, 50))
+        #pygame.draw.rect(tela, (255, 0, 0), (self.posx-camera_x, self.posy-camera_y, 150, 90))
         tela.blit(self.img, (self.rect.x-camera_x, self.rect.y-camera_y))
         
     def gravidade(self, mund, chao_grama, chao_pedra, chao_pedra2):
-        self.rect = pygame.Rect(self.posx, self.posy, 100, 50)
+        self.rect = pygame.Rect(self.posx, self.posy, 150, 90)
         no_chao = False
     
         for lista in [mund, chao_grama, chao_pedra, chao_pedra2]:
@@ -454,7 +454,7 @@ class mob():
     
                 if self.rect.colliderect(rect):
                     no_chao = True
-                    self.posy = rect.top - 49
+                    self.posy = rect.top - 90
                     self.vely = 0
                     break
             if no_chao:
