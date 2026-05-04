@@ -194,10 +194,12 @@ camera_y = 0
 
 #----------- PLAYER ------------
 tam1 = 120
-tam2 = 100
-player = pygame.Rect(50, 10, 50, 100)
+tam2 = 130
+player = pygame.Rect(50, 10, 50, tam2)
 player_1 = pygame.image.load("img/player.png").convert_alpha()
 player_img = pygame.transform.scale(player_1, (tam1, tam2))
+player_fren = pygame.image.load("img/player_fen.png").convert_alpha()
+player2_img = pygame.transform.scale(player_fren, (60, tam2))
 player_x = player.x
 player_y = player.y
 
@@ -953,7 +955,7 @@ while True:
     # PLAYER
     player_x = player.x - camera_x - 35
     player_y = player.y - camera_y
-    #pygame.draw.rect(tela, vermelho, player)
+    #pygame.draw.rect(tela, vermelho, (player.x-camera_x, player.y-camera_y, player.width, player.height))
     if mg == 1:
         tela.blit(player_img, (player_x, player_y))
     if mg == 2:
