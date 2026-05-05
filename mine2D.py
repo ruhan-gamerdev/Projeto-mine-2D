@@ -36,6 +36,7 @@ l = False
 l2 = False
 v = 0
 v2 = 5
+pull = 0
 mg = 2
 clock = pygame.time.Clock()
 fps = 60
@@ -72,6 +73,7 @@ menu = True
 #------------ BUTÃO ------------
 btn_esq = pygame.Rect(10, 550, 200, 160)
 btn_dir = pygame.Rect(220, 550, 200, 160)
+btn_pul = pygame.Rect(1265, 385, 200, 160)
 btn_que = pygame.Rect(1265, 550, 200, 160)
 btn_que2 = pygame.Rect(1265-205, 550, 200, 160)
 btn_rot = pygame.Rect(h, 40, 75, 75)
@@ -1009,6 +1011,8 @@ while True:
     tela.blit(ret_surface, (230, 550))
     #pygame.draw.rect(tela, bt, btn_esq)
     tela.blit(ret_surface, (10, 550))
+    #pygame.draw.rect(tela, bt, btn_pul)
+    tela.blit(ret_surface, (1265, 385))
     
     # ROT
     #pygame.draw.rect(tela, bt, btn_rot)
@@ -1124,6 +1128,14 @@ while True:
         else:
             player.y += v
         
+    #------------PULAR---------------
+    if no_chao and btn_pul.collidepoint(mause_pos) and mause_click:
+        pull = 4
+        
+    if pull > 0:
+        player.y -= 85/4
+        pull -= 1
+    
     #---------- QUEBRAR -----------
     if btn_que.collidepoint(mause_pos) and mause_click:
         if l == True:
